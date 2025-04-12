@@ -50,9 +50,9 @@ public class UserController {
 	
 	
 	@PutMapping("/{userId}")
-	public ResponseEntity<UserDto> updateUser(@Valid @RequestBody UserDto userDto, @PathVariable Integer userId)
+	public ResponseEntity<UpdateUserDto> updateUser(@Valid @RequestBody UpdateUserDto userDto, @PathVariable Integer userId)
 	{
-		UserDto updatedUser=this.userService.updateUser(userDto, userId);
+		UpdateUserDto updatedUser=this.userService.updateUser(userDto, userId);
 		return ResponseEntity.ok(updatedUser);  //This is a shortcut method provided by ResponseEntity to create a response with an HTTP status code of 200 OK.
 	}
 	

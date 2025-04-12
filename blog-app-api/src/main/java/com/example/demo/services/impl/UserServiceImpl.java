@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.config.AppConstants;
 import com.example.demo.entities.Role;
 import com.example.demo.entities.User;
+import com.example.demo.payloads.UpdateUserDto;
 import com.example.demo.payloads.UserDto;
 import com.example.demo.repositories.RoleRepo;
 import com.example.demo.repositories.UserRepo;
@@ -49,22 +50,16 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDto updateUser(@Valid UserDto userDto, Integer userId) {
+	public UpdateUserDto updateUser(@Valid UpdateUserDto userDto, Integer userId) {
 		// TODO Auto-generated method stub
 		User user=this.userRepo.findById(userId).orElseThrow(()->new ResourceNotFoundException("User","id",userId));
 		
 		user.setName(userDto.getName());
 		user.setEmail(userDto.getEmail());
 		user.setAbout(userDto.getAbout());
-		 // Optional: Only encode if password is changed
-	    if (userDto.getPassword() != null && !userDto.getPassword().isBlank()) {
-	        // Check if the new password is different from the encoded one
-	        if (!passwordEncoder.matches(userDto.getPassword(), user.getPassword())) {
-	            user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-	        }
-	    }
+		
 		User updatedUser=this.userRepo.save(user);
-		return this.userToDto(updatedUser);
+		return this.usertoUpdateUserDto(updatedUser);
 		
 		
 		
@@ -138,6 +133,12 @@ public class UserServiceImpl implements UserService {
 		UserDto userdto=this.modelMapper.map(user, UserDto.class);	
 		return userdto;
 		
+	}
+	
+	private UpdateUserDto usertoUpdateUserDto(User user)
+	{
+		UpdateUserDto up=this.modelMapper.map(user, UpdateUserDto.class);
+		return up;
 	}
 
 	@Override
