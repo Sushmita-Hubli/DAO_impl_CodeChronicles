@@ -23,6 +23,9 @@ public class Comment {
 	
 	@ManyToOne // many comments can belong to a particular post
 	private Post post;
+	
+	@ManyToOne // A comment is created by one user, so there’s a many-to-one relationship with User
+    private User user;  // Added a reference to the User entity
 
 	public Integer getId() {
 		return id;
@@ -48,6 +51,16 @@ public class Comment {
 		this.post = post;
 	}
 	
+	
+	public void setUser(User user)
+	{
+		this.user=user;
+	}
+	
+	public User getUser()
+	{
+		return this.user;
+	}
 	
 	
 

@@ -1,6 +1,7 @@
 package com.example.demo.payloads;
 
 import java.util.HashSet;
+import java.util.*;
 import java.util.Set;
 
 import com.example.demo.entities.Role;
@@ -40,6 +41,7 @@ public class UserDto {
 	
 	private Set<RoleDto> roles=new HashSet<>();
 	
+	private List<CommentDto> comments=new ArrayList<>();
 	
 	@JsonIgnore
 	public String getPassword()

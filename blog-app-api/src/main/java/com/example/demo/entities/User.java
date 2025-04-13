@@ -52,6 +52,12 @@ public class User implements UserDetails{
 	@OneToMany(mappedBy="user", cascade=CascadeType.ALL,fetch=FetchType.LAZY) 
 	private List<Post> posts=new ArrayList<>();
 	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Comment> comments = new ArrayList<>();
+
+	
+	
+   
 	
 	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE},fetch=FetchType.EAGER)
 	@JoinTable(name="user_role",
@@ -177,6 +183,16 @@ public class User implements UserDetails{
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+	
+	public List<Comment> getComments()
+	{
+		return comments;
+	}
+	
+	public void setComments(List<Comment> comments)
+	{
+		this.comments=comments;
 	}
 	
 	
