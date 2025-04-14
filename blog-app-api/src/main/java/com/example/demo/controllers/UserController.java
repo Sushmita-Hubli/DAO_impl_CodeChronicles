@@ -83,5 +83,13 @@ public class UserController {
 	}
 	
 	
+	//search user by keyword
+	@GetMapping("/search/{keyword}")
+	public ResponseEntity<List<UserDto>> getuserbykeyword(@PathVariable String keyword)
+	{
+		List<UserDto> users=this.userService.searchUsers(keyword);
+		return new ResponseEntity<List<UserDto>>(users,HttpStatus.OK);
+	}
+	
 
 }

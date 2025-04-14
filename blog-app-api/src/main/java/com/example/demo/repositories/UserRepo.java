@@ -1,5 +1,6 @@
 package com.example.demo.repositories;
 
+import com.example.demo.entities.Post;
 import com.example.demo.entities.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.NoResultException;
@@ -66,4 +67,16 @@ public class UserRepo {
             return Optional.empty();
         }
     }
+    
+    
+    
+    public List<User> findByUsernameContaining(String prefix) {
+        TypedQuery<User> query = entityManager.createQuery(
+            "SELECT u FROM User u WHERE LOWER(u.name) LIKE :prefix", User.class);
+        query.setParameter("prefix", prefix.toLowerCase() + "%");
+        return query.getResultList();
+    }
+
+
+
 }

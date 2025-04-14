@@ -173,4 +173,13 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	
+	//get users based on username
+	@Override
+	public List<UserDto> searchUsers(String keyword) {
+		List<User> users=this.userRepo.findByUsernameContaining("%"+keyword+"%");
+		return users.stream().map(user->this.modelMapper.map(user, UserDto.class)).collect(Collectors.toList());
+		
+		
+	}
 }

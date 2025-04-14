@@ -19,7 +19,7 @@ public interface UserService {
 	
 	String deleteUser(Integer userId);
 	
-	
+	List<UserDto> searchUsers(String keyword);
 	
 	
 	
