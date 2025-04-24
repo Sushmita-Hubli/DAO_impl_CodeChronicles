@@ -19,7 +19,7 @@ public class SwaggerConfig {
     public OpenAPI myCustomConfig() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("CodeChronicles – Scalable Backend for Developer-Focused Content Management") 
+                        .title("CodeChronicles – Scalable Platform for Developer-Focused Content Management") 
                         .description("A RESTful API for Content Management. Developed by Sushmita Hubli.") 
                         .version("1.0") 
                         .contact(new Contact()

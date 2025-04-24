@@ -63,18 +63,6 @@ public class BlogAppApiApplication implements CommandLineRunner{
 	    }
 	}
 	
-	
-	 private static void printHibernateVersion() {
-	        try {
-	            StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure().build();
-	            Metadata metadata = new MetadataSources(registry).getMetadataBuilder().build();
-	            SessionFactory sessionFactory = metadata.getSessionFactoryBuilder().build();
-	            String hibernateVersion = org.hibernate.Version.getVersionString();
-	            System.out.println("Hibernate Version: " + hibernateVersion);
-	            sessionFactory.close();
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-	    }
+
 
 }
